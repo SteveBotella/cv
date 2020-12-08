@@ -1,0 +1,27 @@
+body {
+    background-color: #222222;
+    color: #9fa7b0;
+    width: 900px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.NavButton {
+    display: inline;
+    width: 300;
+	height: 60;
+    background-image: url("NavButton.jpg");
+    background-size: 300px;
+    font-size: 1.5em;
+    
+}
+
+#Img_CV {
+    height: 300px;
+    background-image: url("img_CV.jpg");
+}
+
+#Img_CV:hover {
+    height: 300px;
+    background-image: url("img_CVHover.jpg");
+}
