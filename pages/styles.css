@@ -1,0 +1,236 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #222222;
+    width: 900px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    background-color: #222222;
+    color: #9fa7b0;
+    font-family: 'East Sea Dokdo', cursive;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 0;
+}
+
+header {
+    width: 900px;
+    margin: auto;
+    padding: 0;
+}
+
+a:link, a:active, a:visited, a:hover, a:focus {
+    text-decoration: none;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+h1 {
+    color: #739fc4;
+    font-family: 'Nunito', sans-serif;
+}
+
+h2 {
+    color: #c49473;
+    font-style: italic;
+}
+
+h3 {
+    color: hsl(124, 38%, 79%);
+    font-weight: bold;
+}
+
+.NavBar {
+    margin-bottom: 10px;
+    width: 900px;
+}
+
+.NavButton {
+    display: flex;
+    height: 60px;
+    justify-content: space-around;
+    flex-direction: row;
+    background-image: url("NavButton.jpg");
+    width: auto;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.NavButton li {
+    font-size: 20px;
+    font-style: normal;
+    color: white;
+    margin: auto;
+}
+
+.NavButton a {
+    position: relative;
+    left: 20px;
+}
+
+.NavButton a:link, a:active, a:visited {
+    color: #9fa7b0;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#Img_CV {
+    height: 300px;
+    background-image: url("img_CV.jpg");
+}
+
+#Img_CV:hover {
+    height: 300px;
+    background-image: url("img_CVHover.jpg");
+}
+
+.CompetencesEtHobbies {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: #262626;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.Competences {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #242424;
+    width: 33%;
+}
+
+.CompetencesList {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #242424;
+}
+
+.Hobbies {
+    display: flex;
+    justify-content: space-around;
+    background-color: #242424;
+    width: 33%;
+}
+
+.ExperiencesTitle {
+    display: flex;
+    justify-content: space-evenly;    
+    background-image: url("img_TitleBorder.jpg");
+    height: 100px;
+}
+
+.Experiences {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #262626;
+}
+
+table {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+td {
+    background-color: #242424;
+    width: 230px;
+    height: 100px;
+    color: #9fa7b0;
+}
+
+td h2 {
+    text-align: center;
+}
+
+.CellText {
+    padding-left: 40px;
+    padding-right: 20px;
+}
+
+.MyYT {
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+}
+
+.Unreal {
+    text-align: center;
+}
+
+
+.PVideo {
+    text-align: center;
+}
+
+.Email {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.Email a {
+    color: white;
+}
+
+.Ou {
+    text-align: center;
+}
+
+form {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Name {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.NameSpace {
+    margin-right: 8px;
+}
+
+.Mail {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.Contact {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.MP {
+    display: flex;
+    flex-direction: column;
+}
+
+.BouttonEnvoyer {
+    margin-top: 10px;
+}
+
+footer {
+    background-image: url("img_Footer.jpg");
+    background-repeat: no-repeat;
+    height: 100px;
+    text-align: center;
+    width: 900px;
+    margin: 0 auto;
+    padding: 0;}
+
+footer p {
+    position: relative;
+    top: 50px;
+    color: #dadfe6;
+}
