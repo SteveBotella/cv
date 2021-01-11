@@ -1,7 +1,7 @@
-<?php
 body>
     <main>
         <header>
+            <link rel="stylesheet" href="styles.css">
             <nav class="NavBar">
                 <!--List a puce afin de créer la NavBar-->
                 <ul class="NavButton">
