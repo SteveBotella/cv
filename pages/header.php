@@ -13,7 +13,7 @@
     echo "$metaTitle";
     ?>
     <!--Lier la page de style css à la page index-->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/pages/styles.css">
 </head>
 <!--Intérieur de la page-->
 
@@ -23,11 +23,11 @@
         <!--List a puce afin de créer la NavBar-->
         <ul class="NavButton">
             <!--Lien interne vers la page principale-->
-            <li><a href="cv.php">CV</a></li>
+            <li><a href="../?page=cv">CV</a></li>
             <!-- Lien interne vers la page hobby-->
-            <li><a href="hobby.php">Hobby</a></li>
+            <li><a href="../pages/hobby.php?page=hobby">Hobby</a></li>
             <!-- Lien interne vers la page contact-->
-            <li><a href="contact.php">Contact</a></li>
+            <li><a href="../pages/contact.php?page=contact">Contact</a></li>
         </ul>
     </nav>
     <div id="Img_CV"></div>

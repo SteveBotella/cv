@@ -1,10 +1,10 @@
 <?php
 
-switch ($_SERVER['REQUEST_URI']) {
-    case '/hobby':
+switch ($_GET['pages']) {
+    case 'hobby':
         include 'hobby.php';
         break;
-    case '/contact':
+    case 'contact':
         include 'contact.php';
         break;
     default:
