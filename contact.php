@@ -1,20 +1,7 @@
-<body>
+<?php
+require 'header.php';
+?>
     <main>
-        <header>
-            <link rel="stylesheet" href="styles.css">
-            <nav class="NavBar">
-                <!--List a puce afin de créer la NavBar-->
-                <ul class="NavButton">
-                    <!--Lien interne vers la page principale-->
-                    <li><a href="index.html">CV</a></li>
-                    <!-- Lien interne vers la page hobby-->
-                    <li><a href="hobby.html">Hobby</a></li>
-                    <!-- Lien interne vers la page contact-->
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <div id="Img_CV"></div>
-        </header>
         <div class="Email"><a href="mailto:steve.botella@le-campus-numerique.fr">Me contacter par email &#128077;</a>
         </div>
         <div class="Ou"><p>Ou remplir le formulaire de contact ci-dessous</p></div>
@@ -45,4 +32,6 @@
             </div>
         </form>
     </main>
-</body>
+<?php
+require 'footer.php';
+?>

@@ -1,20 +1,7 @@
-<body>
+<?php
+require 'header.php';
+?>
     <main>
-        <header>
-            <link rel="stylesheet" href="styles.css">
-            <nav class="NavBar">
-                <!--List a puce afin de créer la NavBar-->
-                <ul class="NavButton">
-                    <!--Lien interne vers la page principale-->
-                    <li><a href="index.html">CV</a></li>
-                    <!-- Lien interne vers la page hobby-->
-                    <li><a href="hobby.html">Hobby</a></li>
-                    <!-- Lien interne vers la page contact-->
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <div id="Img_CV"></div>
-        </header>
         <!--Block concernant les compétences (classe parent)-->
         <div class="CompetencesEtHobbies">
             <div class="Competences">
@@ -28,26 +15,26 @@
                     <!--La compétence et sa description-->
                     <li class="CompetencesDescription">
                         <h3>Programmation</h3><br>HTML/CSS<br>Java<br>C++<br>Visual Scripting
-</li>
+                    </li>
                     <!--La compétence et sa description-->
                     <li class="CompetencesDescription">
                         <h3>Design</h3>
                         <ul>
                             <li>
-Photoshop
+                                Photoshop
                             </li>
                             <li>
-UI/UX Unreal Engine 4 UMG
-</li>
+                                UI/UX Unreal Engine 4 UMG
+                            </li>
                             <li>
-DAO Tablette Graphique
-</li>
+                                DAO Tablette Graphique
+                            </li>
                         </ul>
                     </li>
                     <!--La compétence et sa description-->
                     <li class="CompetencesDescription">
                         <h3>Outils numérique</h3><br>Suite Google<br>Création/gestion de serveurs Discord<br>Git/Github
-</li>
+                    </li>
                 </ul>
             </div>
             <div class="Hobbies">
@@ -61,15 +48,15 @@ DAO Tablette Graphique
                     <li class="HobbiesDescription">
                         <!--Le hobby et sa description-->
                         <h3>Digital Art</h3><br>Modélisation 2D<br>Animation 2D/3D
-</li>
+                    </li>
                     <li class="HobbiesDescription">
                         <!--Le hobby et sa description-->
                         <h3>Sport</h3><br>E-sport<br>Arts Martiaux<br>Sport Extrême
-</li>
+                    </li>
                     <li class="HobbiesDescription">
                         <!--Le hobby et sa description-->
                         <h3>Divers</h3><br>Ecriture coopérative<br>Jeux de rôle<br>High-Tech<br>Aérospatiale
-</li>
+                    </li>
                 </ol>
             </div>
         </div>
@@ -94,8 +81,9 @@ DAO Tablette Graphique
                     <td class="CellText">Gardien de la Paix<br>2014 - 2019<br>Ministère de l'intérieur,Paris/Clichy (92)
                     </td>
                     <td class="CellText">Tech. Informatique<br>2010 - 2014<br>Magasin puis en auto-entreprise, Beaune
-                        (21)</td>
-                    <td class="CellText"><a href="hobby.html">Création de jeux vidéo</a></td>
+                        (21)
+                    </td>
+                    <td class="CellText"><a href="hobby.php">Création de jeux vidéo</a></td>
                 </tr>
                 <tr>
                     <td class="CellText">Equipier Polyvalent<br>2008 - 2010<br>Mc Donald, Levernois (21)</td>
@@ -103,6 +91,8 @@ DAO Tablette Graphique
                     <td class="CellText">Basketball<br>1996 - 2006<br>Championnat Régional</td>
                 </tr>
             </table>
-        </div>        
+        </div>
     </main>
-</body>
+<?php
+require 'footer.php';
+?>
