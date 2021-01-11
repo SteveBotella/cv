@@ -85,6 +85,7 @@ require 'header.php';
                     </td>
                     <td class="CellText"><a href="hobby.php">Création de jeux vidéo</a></td>
                 </tr>
+                </tr>
                 <tr>
                     <td class="CellText">Equipier Polyvalent<br>2008 - 2010<br>Mc Donald, Levernois (21)</td>
                     <td class="CellText">Intérimaire<br>2006 - 2014<br>Supplay, Beaune (21)</td>

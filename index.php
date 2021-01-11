@@ -1,5 +1,5 @@
 <?php
-if (isset($_GET)==false) {
+if (isset($_GET['page'])) {
     switch ($_GET['page']) {
         case 'hobby':
             include 'pages/hobby.php';
@@ -11,6 +11,8 @@ if (isset($_GET)==false) {
             include 'pages/cv.php';
             break;
         default:
-            include '/404.jpg';
+            include '';
     }
-} include 'pages/cv.php';
+} else {
+    include 'pages/cv.php';
+}
