@@ -11,6 +11,6 @@ if (isset($_GET)==false) {
             include 'pages/cv.php';
             break;
         default:
-            include '404.jpg';
+            include '/404.jpg';
     }
 } include 'pages/cv.php';
