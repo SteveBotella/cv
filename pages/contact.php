@@ -1,8 +1,16 @@
 <?php
 require 'header.php';
-$file_contact = 'contact/contact.txt';
+$file_contact = 'contact/contact'.date(' Y-m-d-H-i-s').'.txt';
+$file_contact_civilite = filter_input(INPUT_POST, 'civilite', FILTER_DEFAULT);
+file_put_contents($file_contact, $file_contact_civilite, FILE_APPEND | LOCK_EX);
 $file_contact_name = filter_input(INPUT_POST, 'user_name', FILTER_DEFAULT);
 file_put_contents($file_contact, $file_contact_name, FILE_APPEND | LOCK_EX);
+$file_contact_raison = filter_input(INPUT_POST, 'raison-contact', FILTER_DEFAULT);
+file_put_contents($file_contact, $file_contact_raison, FILE_APPEND | LOCK_EX);
+$file_contact_email = filter_input(INPUT_POST, 'user_mail', FILTER_DEFAULT);
+file_put_contents($file_contact, $file_contact_email, FILE_APPEND | LOCK_EX);
+$file_contact_mp = filter_input(INPUT_POST, 'user_message', FILTER_DEFAULT);
+file_put_contents($file_contact, $file_contact_mp, FILE_APPEND | LOCK_EX);
 ?>
     <main>
         <div class="Email"><a href="mailto:steve.botella@le-campus-numerique.fr">Me contacter par email &#128077;</a>
