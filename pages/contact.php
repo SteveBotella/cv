@@ -1,5 +1,8 @@
 <?php
 require 'header.php';
+$file_contact = 'contact/contact.txt';
+$file_contact_name = filter_input(INPUT_POST, 'user_name', FILTER_DEFAULT);
+file_put_contents($file_contact, $file_contact_name, FILE_APPEND | LOCK_EX);
 ?>
     <main>
         <div class="Email"><a href="mailto:steve.botella@le-campus-numerique.fr">Me contacter par email &#128077;</a>
