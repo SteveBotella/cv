@@ -1,6 +1,6 @@
 <?php
 require 'header.php';
-$file_contact = 'contact/contact'.date(' Y-m-d-H-i-s').'.txt';
+$file_contact = 'contact/contact'.date('_Y-m-d-H-i-s').'.txt';
 $file_contact_civilite = filter_input(INPUT_POST, 'civilite', FILTER_DEFAULT);
 file_put_contents($file_contact, $file_contact_civilite, FILE_APPEND | LOCK_EX);
 $file_contact_name = filter_input(INPUT_POST, 'user_name', FILTER_DEFAULT);
