@@ -1,6 +1,7 @@
 <?php
-if (isset($_GET['page'])) {
-    switch ($_GET['page']) {
+$raw_url = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
+if (isset($raw_url)) {
+    switch ($raw_url) {
         case 'hobby':
             include 'pages/hobby.php';
             break;
@@ -11,7 +12,7 @@ if (isset($_GET['page'])) {
             include 'pages/cv.php';
             break;
         default:
-            include '';
+            include 'pages/404.php';
     }
 } else {
     include 'pages/cv.php';

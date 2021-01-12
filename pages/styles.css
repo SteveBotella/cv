@@ -90,6 +90,13 @@ h3 {
     background-image: url("../images/img_CVHover.jpg");
 }
 
+#404 {
+    height: 1250px;
+    background-image: url("../images/404.jpg");
+    margin: auto;
+    padding: 0;
+}
+
 .CompetencesEtHobbies {
     display: flex;
     flex-direction: row;

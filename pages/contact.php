@@ -6,7 +6,7 @@ require 'header.php';
         </div>
         <div class="Ou"><p>Ou remplir le formulaire de contact ci-dessous</p></div>
         <!--Le Formulaire super compliqué de la mort qui tue tout-->
-        <form action="https://httpbin.org/post" method="post">
+        <form action="../index.php?page=contact" method="post">
             <div class="Name">
                 <label class="NameSpace" for="name">Nom :</label>
                 <input type="text" id="name" name="user_name">
