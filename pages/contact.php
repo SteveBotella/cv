@@ -1,37 +1,49 @@
 <?php
 require 'header.php';
-$file_contact = 'contact/contact'.date('_Y-m-d-H-i-s').'.txt';
-$file_contact_civilite = filter_input(INPUT_POST, 'civilite', FILTER_DEFAULT);
-file_put_contents($file_contact, $file_contact_civilite, FILE_APPEND | LOCK_EX);
-$file_contact_name = filter_input(INPUT_POST, 'user_name', FILTER_DEFAULT);
-file_put_contents($file_contact, $file_contact_name, FILE_APPEND | LOCK_EX);
-$file_contact_raison = filter_input(INPUT_POST, 'raison-contact', FILTER_DEFAULT);
-file_put_contents($file_contact, $file_contact_raison, FILE_APPEND | LOCK_EX);
-$file_contact_email = filter_input(INPUT_POST, 'user_mail', FILTER_DEFAULT);
-file_put_contents($file_contact, $file_contact_email, FILE_APPEND | LOCK_EX);
-$file_contact_mp = filter_input(INPUT_POST, 'user_message', FILTER_DEFAULT);
-file_put_contents($file_contact, $file_contact_mp, FILE_APPEND | LOCK_EX);
-$message = '';
-$civilite = $_POST['civilite'];
-$nom = $_POST['user_name'];
-$mail = $_POST['user_mail'];
-$contact = $_POST['raison-contact'];
-$MP = $_POST['user_message'];
-$valider = $_POST['valider'];
+if (filter_has_var(INPUT_POST, 'valider')) {
+    $message = '';
+    $civilite = $_POST['civilite'];
+    $nom = $_POST['user_name'];
+    $mail = $_POST['user_mail'];
+    if (filter_has_var(INPUT_POST, 'raison-contact')) {
+        $contact = $_POST['raison-contact'];
+    }
+    $MP = $_POST['user_message'];
+    $valider = $_POST['valider'];
+    $IsValid = false;
 
-if (isset($valider)){
-    if (empty($civilite)) {
-        $message = '<div class="Erreur">Aucun élément sélectionné.</div>';
-    } elseif(empty($nom)) {
-        $message = '<div class="Erreur">Entrer un nom.</div>';
-    } elseif(empty($mail)) {
-        $message = '<div class="Erreur">Entrer une adresse email.</div>';
-    } elseif(empty($contact)) {
-        $message = '<div class="Erreur">Choisir une raison.</div>';
-    } elseif(empty($MP)) {
-        $message = '<div class="Erreur">Entrer un message.</div>';
-    } elseif(empty($nom)) {
-        $message = '<div class="Erreur">Entrer un nom.</div>';
+    if (isset($valider)) {
+        if (empty($civilite)) {
+            $message = '<div class="Erreur">Aucun élément sélectionné.</div>';
+        } elseif (empty($nom)) {
+            $message = '<div class="Erreur">Entrer un nom.</div>';
+        } elseif (empty($mail)) {
+            $message = '<div class="Erreur">Entrer une adresse email.</div>';
+        } elseif (empty($contact)) {
+            $message = '<div class="Erreur">Choisir une raison.</div>';
+        } elseif (empty($MP)) {
+            $message = '<div class="Erreur">Entrer un message.</div>';
+        } elseif (strlen($MP) < 5) {
+            $message = '<div class="Erreur">Message trop court.</div>';
+        } elseif (empty($nom)) {
+            $message = '<div class="Erreur">Entrer un nom.</div>';
+        } else {
+            $IsValid = true;
+            $message = '<div class="Erreur">Message envoyé avec succès.</div>';
+        }
+    }
+    if ($IsValid) {
+        $file_contact = 'contact/contact' . date('_Y-m-d-H-i-s') . '.txt';
+        $file_contact_civilite = filter_input(INPUT_POST, 'civilite', FILTER_DEFAULT);
+        file_put_contents($file_contact, $file_contact_civilite, FILE_APPEND | LOCK_EX);
+        $file_contact_name = filter_input(INPUT_POST, 'user_name', FILTER_SANITIZE_STRING);
+        file_put_contents($file_contact, $file_contact_name, FILE_APPEND | LOCK_EX);
+        $file_contact_raison = filter_input(INPUT_POST, 'raison-contact', FILTER_DEFAULT);
+        file_put_contents($file_contact, $file_contact_raison, FILE_APPEND | LOCK_EX);
+        $file_contact_email = filter_input(INPUT_POST, 'user_mail', FILTER_VALIDATE_EMAIL);
+        file_put_contents($file_contact, $file_contact_email, FILE_APPEND | LOCK_EX);
+        $file_contact_mp = filter_input(INPUT_POST, 'user_message', FILTER_SANITIZE_STRING);
+        file_put_contents($file_contact, $file_contact_mp, FILE_APPEND | LOCK_EX);
     }
 }
 ?>
@@ -40,7 +52,11 @@ if (isset($valider)){
         </div>
         <div class="Ou"><p>Ou remplir le formulaire de contact ci-dessous</p></div>
         <!--Le Formulaire super compliqué de la mort qui tue tout-->
-        <?php echo $message ?>
+        <?php
+        if (filter_has_var(INPUT_POST, 'valider')) {
+            echo $message;
+        }
+        ?>
         <form action="../index.php?page=contact" method="post">
             <div class="Civilite">
                 <label for="civilite-select">Mr ou Mme</label>
