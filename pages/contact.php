@@ -11,12 +11,36 @@ $file_contact_email = filter_input(INPUT_POST, 'user_mail', FILTER_DEFAULT);
 file_put_contents($file_contact, $file_contact_email, FILE_APPEND | LOCK_EX);
 $file_contact_mp = filter_input(INPUT_POST, 'user_message', FILTER_DEFAULT);
 file_put_contents($file_contact, $file_contact_mp, FILE_APPEND | LOCK_EX);
+$message = '';
+$civilite = $_POST['civilite'];
+$nom = $_POST['user_name'];
+$mail = $_POST['user_mail'];
+$contact = $_POST['raison-contact'];
+$MP = $_POST['user_message'];
+$valider = $_POST['valider'];
+
+if (isset($valider)){
+    if (empty($civilite)) {
+        $message = '<div class="Erreur">Aucun élément sélectionné.</div>';
+    } elseif(empty($nom)) {
+        $message = '<div class="Erreur">Entrer un nom.</div>';
+    } elseif(empty($mail)) {
+        $message = '<div class="Erreur">Entrer une adresse email.</div>';
+    } elseif(empty($contact)) {
+        $message = '<div class="Erreur">Choisir une raison.</div>';
+    } elseif(empty($MP)) {
+        $message = '<div class="Erreur">Entrer un message.</div>';
+    } elseif(empty($nom)) {
+        $message = '<div class="Erreur">Entrer un nom.</div>';
+    }
+}
 ?>
     <main>
         <div class="Email"><a href="mailto:steve.botella@le-campus-numerique.fr">Me contacter par email &#128077;</a>
         </div>
         <div class="Ou"><p>Ou remplir le formulaire de contact ci-dessous</p></div>
         <!--Le Formulaire super compliqué de la mort qui tue tout-->
+        <?php echo $message ?>
         <form action="../index.php?page=contact" method="post">
             <div class="Civilite">
                 <label for="civilite-select">Mr ou Mme</label>
@@ -45,7 +69,7 @@ file_put_contents($file_contact, $file_contact_mp, FILE_APPEND | LOCK_EX);
             <div class="MP">
                 <label for="msg">Message :</label>
                 <textarea id="msg" name="user_message" placeholder="Votre message"></textarea>
-                <input class="BouttonEnvoyer" type="submit" value="Envoyer">
+                <input class="BouttonEnvoyer" type="submit" name="valider" value="Envoyer">
                 <input class="BouttonReset" type="reset" value="Reset">
             </div>
         </form>
