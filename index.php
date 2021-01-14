@@ -1,4 +1,5 @@
 <?php
+$_SESSION['dateFirstVisit'] = date('_Y-m-d-H-i-s');
 $raw_url = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
 if (isset($raw_url)) {
     switch ($raw_url) {

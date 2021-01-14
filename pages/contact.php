@@ -40,10 +40,8 @@ if (filter_has_var(INPUT_POST, 'valider')) {
                 </select>
             </div>
             <?php
-            if (isset($valider)) {
-                if (empty($file_contact_civilite)) {
+            if (isset($valider) && empty($file_contact_civilite)) {
                     echo 'Aucune civilité sélectionnée.';
-                }
             }
             ?>
             <div class="Name">
@@ -51,10 +49,8 @@ if (filter_has_var(INPUT_POST, 'valider')) {
                 <input type="text" id="name" name="user_name">
             </div>
             <?php
-            if (isset($valider)) {
-                if (empty($file_contact_name)) {
+            if (isset($valider) && empty($file_contact_name)) {
                     echo 'Entrer un nom.';
-                }
             }
             ?>
             <div class="Mail">
@@ -62,10 +58,8 @@ if (filter_has_var(INPUT_POST, 'valider')) {
                 <input type="email" id="mail" name="user_mail">
             </div>
             <?php
-            if (isset($valider)) {
-                if (empty($file_contact_email)) {
+            if (isset($valider) && empty($file_contact_email)) {
                     echo 'Entrer une adresse email.';
-                }
             }
             ?>
             <div class="Contact">
@@ -77,20 +71,16 @@ if (filter_has_var(INPUT_POST, 'valider')) {
                 <input type="radio" id="Rencontre" name="raison-contact" value="Rencontre">
             </div>
             <?php
-            if (isset($valider)) {
-                if (empty($file_contact_raison)) {
+            if (isset($valider) && empty($file_contact_raison)) {
                     echo 'Choisir une raison.';
-                }
             }
             ?>
             <div class="MP">
                 <label for="msg">Message :</label>
                 <textarea id="msg" name="user_message" placeholder="Votre message"></textarea>
                 <?php
-                if (isset($valider)) {
-                    if (empty($file_contact_mp)) {
+                if (isset($valider) && empty($file_contact_mp)) {
                         echo 'Entrer un message.';
-                    }
                 }
                 ?>
                 <input class="BouttonEnvoyer" type="submit" name="valider" value="Envoyer">

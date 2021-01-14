@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html lang="fr">
 <!--bloc concernant la structure du site-->
 
