@@ -3,10 +3,10 @@ require 'header.php';
 
 if (filter_has_var(INPUT_POST, 'valider')) {
     $message = '';
-    $file_contact_civilite = filter_input(INPUT_POST, 'civilite', FILTER_DEFAULT);
+    $file_contact_civilite = filter_input(INPUT_POST, 'civilite');
     $file_contact_name = filter_input(INPUT_POST, 'user_name', FILTER_SANITIZE_STRING);
     $file_contact_email = filter_input(INPUT_POST, 'user_mail', FILTER_VALIDATE_EMAIL);
-    $file_contact_raison = filter_input(INPUT_POST, 'raison-contact', FILTER_DEFAULT);
+    $file_contact_raison = filter_input(INPUT_POST, 'raison-contact');
     $file_contact_mp = filter_input(INPUT_POST, 'user_message', FILTER_SANITIZE_STRING);
     $valider = $_POST['valider'];
     $can_send = false;
