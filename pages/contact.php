@@ -1,41 +1,55 @@
 <?php
 require 'header.php';
 
-$formErrors = array(
-    'civilite' => 'Aucune civilité sélectionnée.',
-    'user_name' => 'Entrer un nom.',
-    'user_mail' => 'Entrer une adresse mail.',
-    'raison-contact' => 'Choisir une raison.',
-    'user_message' => 'Entrer un message.',
-    'min5char' => 'Taper au moins 5 charactères.',
-);
+$valider = filter_has_var(INPUT_POST, 'valider');
 
-$file_contact_key = array(
-    'civilite' => 'civilite',
-    'user_name' => 'user_name',
-    'user_mail' => 'user_mail',
-    'raison-contact' => 'raison-contact',
-    'user_message' => 'user_message',
-);
+if ($valider) {
+    $filterSanetize = array(
+        'civilite' => FILTER_SANITIZE_STRING,
+        'user_name' => FILTER_SANITIZE_STRING,
+        'user_mail' => FILTER_SANITIZE_STRING,
+        'raison-contact' => FILTER_SANITIZE_STRING,
+        'user_message' => FILTER_SANITIZE_STRING,
+    );
 
-if (filter_has_var(INPUT_POST, 'valider')) {
-    $file_contact_content = filter_input_array(INPUT_POST, $file_contact_key);
-    $valider = $_POST['valider'];
-    $can_send = false;
+    $filterValidate = array(
+        'user_mail' => FILTER_VALIDATE_EMAIL,
+    );
 
-    if (!empty($file_contact_content['civilite']) && !empty($file_contact_content['user_name']) && !empty($file_contact_content['user_mail']) && !empty($file_contact_content['raison-contact']) && (!empty($file_contact_content['user_message']) || strlen($file_contact_content['user_message']) < 5)) {
-        $can_send = true;
-    }
+    $inputsSanetize = filter_input_array(INPUT_POST, $filterSanetize);
+    $inputsValidate = filter_input_array(INPUT_POST, $filterValidate);
 
-    if (isset($valider) && ($can_send) == true) {
-        $file_contact = 'contact/contact' . date('_Y-m-d-H-i-s') . '.txt';
-        file_put_contents($file_contact, $file_contact_content['civilite'], FILE_APPEND | LOCK_EX);
-        file_put_contents($file_contact, $file_contact_content['user_name'], FILE_APPEND | LOCK_EX);
-        file_put_contents($file_contact, $file_contact_content['user_mail'], FILE_APPEND | LOCK_EX);
-        file_put_contents($file_contact, $file_contact_content['raison-contact'], FILE_APPEND | LOCK_EX);
-        file_put_contents($file_contact, $file_contact_content['user_message'], FILE_APPEND | LOCK_EX);
+    if (!empty($inputsSanetize['civilite'])
+        && !empty($inputsSanetize['user_name'])
+        && !empty($inputsSanetize['user_mail'])
+        && $inputsValidate['user_mail']
+        && !empty($inputsSanetize['raison-contact'])
+        && strlen($inputsSanetize['user_message']) < 6) {
+        $fileContact = 'contact/contact' . date('_Y-m-d-H-i-s') . '.txt';
+
+        $fileContent = [
+            'civilite : ' . $inputsSanetize['civilite'] . PHP_EOL,
+            'user_name : ' . $inputsSanetize['user_name'] . PHP_EOL,
+            $inputsSanetize['user_mail'] . PHP_EOL,
+            $inputsSanetize['raison-contact'] . PHP_EOL,
+            $inputsSanetize['user_message'] . PHP_EOL,
+        ];
+
+        file_put_contents($fileContact, $fileContent, FILE_APPEND);
+
+        echo 'Merci bisous 😘';
+    } else {
+        $formErrors = array(
+            'civilite' => 'Aucune civilité sélectionnée.',
+            'user_name' => 'Entrer un nom.',
+            'user_mail' => 'Entrer une adresse mail.',
+            'raison-contact' => 'Choisir une raison.',
+            'user_message' => 'Entrer un message.',
+            'min5char' => 'Taper au moins 5 charactères.',
+        );
     }
 }
+
 
 ?>
     <main>
@@ -53,7 +67,7 @@ if (filter_has_var(INPUT_POST, 'valider')) {
                 </select>
             </div>
             <?php
-            if (isset($valider) && empty($file_contact_content['civilite'])) {
+            if ($valider && empty($inputsSanetize['civilite'])) {
                 echo $formErrors['civilite'];
             }
             ?>
@@ -62,7 +76,7 @@ if (filter_has_var(INPUT_POST, 'valider')) {
                 <input type="text" id="name" name="user_name">
             </div>
             <?php
-            if (isset($valider) && empty($file_contact_content['user_name'])) {
+            if ($valider && empty($inputsSanetize['user_name'])) {
                 echo $formErrors['user_name'];
             }
             ?>
@@ -71,8 +85,10 @@ if (filter_has_var(INPUT_POST, 'valider')) {
                 <input type="email" id="mail" name="user_mail">
             </div>
             <?php
-            if (isset($valider) && empty($file_contact_content['user_mail'])) {
+            if ($valider && empty($inputsSanetize['user_mail'])) {
                 echo $formErrors['user_mail'];
+            } elseif ($valider && !$inputsValidate['user_mail']) {
+                echo 'Mail noooooooonnn  valideeeeeeuuuuu';
             }
             ?>
             <div class="Contact">
@@ -84,7 +100,7 @@ if (filter_has_var(INPUT_POST, 'valider')) {
                 <input type="radio" id="Rencontre" name="raison-contact" value="Rencontre">
             </div>
             <?php
-            if (isset($valider) && empty($file_contact_content['raison-contact'])) {
+            if ($valider && empty($inputsSanetize['raison-contact'])) {
                 echo $formErrors['raison-contact'];
             }
             ?>
@@ -92,9 +108,9 @@ if (filter_has_var(INPUT_POST, 'valider')) {
                 <label for="msg">Message :</label>
                 <textarea id="msg" name="user_message" placeholder="Votre message"></textarea>
                 <?php
-                if (isset($valider) && empty($file_contact_content['user_message'])) {
+                if ($valider && empty($inputsSanetize['user_message'])) {
                     echo $formErrors['user_message'];
-                } elseif (isset($valider) && strlen($file_contact_content['user_message']) < 5) {
+                } elseif ($valider && strlen($inputsSanetize['user_message']) < 5) {
                     echo $formErrors['min5char'];
                 }
                 ?>
